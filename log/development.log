@@ -8601,3 +8601,63 @@ Processing by PublishesController#index as HTML
 Completed 200 OK in 108ms (Views: 95.0ms | ActiveRecord: 4.0ms | Allocations: 28463)
 
 
+Started GET "/publishes?search=rails&commit=" for ::1 at 2022-07-27 22:08:23 -0500
+Processing by PublishesController#index as HTML
+  Parameters: {"search"=>"rails", "commit"=>""}
+  [1m[36mPublish Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "publishes" WHERE (content LIKE '%rails%' or title LIKE '%rails%') ORDER BY published_at DESC, created_at DESC LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/publishes_controller.rb:10:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering publishes/index.html.erb within layouts/application
+  Rendered publishes/_search.html.erb (Duration: 3.4ms | Allocations: 498)
+  [1m[36mPublish Load (0.5ms)[0m  [1m[34mSELECT "publishes".* FROM "publishes" WHERE (content LIKE '%rails%' or title LIKE '%rails%') ORDER BY published_at DESC, created_at DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/publishes/index.html.erb:30
+  [1m[36mActionText::RichText Load (0.3ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = $1 AND "action_text_rich_texts"."record_type" = $2 AND "action_text_rich_texts"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "Publish"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/views/publishes/_publish.html.erb:6
+  Rendered /home/johnm/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.3.1/app/views/action_text/contents/_content.html.erb within layouts/action_text/contents/_content (Duration: 7.1ms | Allocations: 2058)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/publishes/_publish.html.erb:10
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."publish_id" = $1[0m  [["publish_id", 17]]
+  ↳ app/views/publishes/_publish.html.erb:11
+  Rendered publishes/_publish.html.erb (Duration: 26.2ms | Allocations: 6735)
+  [1m[36mActionText::RichText Load (0.2ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = $1 AND "action_text_rich_texts"."record_type" = $2 AND "action_text_rich_texts"."name" = $3 LIMIT $4[0m  [["record_id", 16], ["record_type", "Publish"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/views/publishes/_publish.html.erb:6
+  Rendered /home/johnm/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.3.1/app/views/action_text/contents/_content.html.erb within layouts/action_text/contents/_content (Duration: 0.5ms | Allocations: 747)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/publishes/_publish.html.erb:10
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."publish_id" = $1[0m  [["publish_id", 16]]
+  ↳ app/views/publishes/_publish.html.erb:11
+  Rendered publishes/_publish.html.erb (Duration: 7.3ms | Allocations: 4080)
+  [1m[36mPublish Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "publishes" WHERE (content LIKE '%rails%' or title LIKE '%rails%')[0m
+  ↳ app/views/publishes/index.html.erb:35
+  [1m[36mPublish Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "publishes" ORDER BY likes DESC LIMIT $1) subquery_for_count[0m  [["LIMIT", 10]]
+  ↳ app/views/publishes/index.html.erb:44
+  [1m[36mPublish Load (0.2ms)[0m  [1m[34mSELECT "publishes".* FROM "publishes" ORDER BY likes DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/publishes/index.html.erb:47
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/publishes/index.html.erb:52
+  Rendered publishes/index.html.erb within layouts/application (Duration: 97.5ms | Allocations: 24720)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbarfull.html.erb:4
+  Rendered layouts/_navbarfull.html.erb (Duration: 18.7ms | Allocations: 2421)
+  Rendered layout layouts/application.html.erb (Duration: 199.0ms | Allocations: 32870)
+Completed 200 OK in 232ms (Views: 200.2ms | ActiveRecord: 9.4ms | Allocations: 37579)
+
+
