@@ -1,4 +1,4 @@
-frozen_string_literal: true
+# frozen_string_literal: true
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :sign_up_params, only: [:create]
   before_action :account_update_params, only: [:update]
