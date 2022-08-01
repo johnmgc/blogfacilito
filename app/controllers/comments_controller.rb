@@ -29,8 +29,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.publish_id = comment_params[:publish_id]
     @comment.user_id = current_user.id
+    publish = Publish.find_by_id(comment_params[:publish_id])
+    @user = User.find_by_id(publish.user_id)
     respond_to do |format|
       if @comment.save
+        UserMailer.with(user: @user).comunicados_comentarios.deliver_later
         format.html { redirect_to comment_url(@comment), notice: "El comentario fue creado con éxito." }
         format.json { render :show, status: :created, location: @comment }
       else
